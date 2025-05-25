@@ -148,7 +148,7 @@ p{
     box-sizing: border-box;
 }
 .moving{
-    animation: textobject 300s linear infinite;
+    animation: textobject 700s linear infinite;
     display: inline-block;
 }
 .movingobject{
