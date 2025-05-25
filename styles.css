@@ -171,6 +171,10 @@ p{
     background: linear-gradient(to right, #0cc660,#0a66a8);
     border-radius: 5px;
 } 
+input::placeholder{
+  color: rgb(0, 0, 0);
+  font-size: large;
+}
 .textname{
     width: 670px;
     height: 30px;
