@@ -36,10 +36,23 @@ td img {
 
 h1{
     color: #d63384;
+    text-align: center;
+}
+.fortuneflowermain{
+    text-align: center;
+}
+p{
+    text-align: center;
 }
 
 ul {
     list-style-type: square;
+}
+h3{
+    text-align: center;
+}
+h2{
+    text-align: center;
 }
 
 ul li {
@@ -89,12 +102,12 @@ p{
     color: blueviolet;
 }
 .aboutustext{
-    width: 62%;
-    margin:0 0 10% auto;
-    text-align: left;
+    width: 150;
+    margin:0 0 5% auto;
+    text-align: center;
 }
 .infotext{
-    color: rgb(19, 117, 209);
+    color: rgb(11, 13, 16);
 }
 .gmailcolor{
     color: #a8630a;
@@ -132,9 +145,17 @@ p{
     border: none;
     color: rgb(50, 100, 195);
     font-size: x-large;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 49%;
+    top: 270%;
+    text-decoration: underline;
 }
 .btncss:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 .rightsres{
     text-align: center;
