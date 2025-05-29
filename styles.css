@@ -93,8 +93,12 @@ p{
 .elfsight-app-6fd0ed8e-f03d-4650-9540-02388b474025{
    content: left;
 }
+.seasontext1{
+    text-align: center;
+    align-self: center;
+}
 .footer_img{
-    align-items: center;
+    text-align: center;
 }
 .aboutus{
     align-items: justify;
