@@ -1,3 +1,38 @@
+
+/*.topnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  flex-wrap: wrap; 
+  height: auto;    
+  padding: 10px 0;
+}
+
+.topnav a {
+  color: #f2f2f2;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.topnav a:hover {
+  background-color: green;
+}
+
+@media screen and (max-width: 768px) {
+  .topnav {
+    flex-direction: column; 
+    align-items: center;    
+  }
+
+  .topnav a {
+    width: 100%;            
+    text-align: center;
+  }*/
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -35,7 +70,7 @@ td img {
 }
 
 h1{
-    color: #d63384;
+    color: #031b08;
     text-align: center;
 }
 .fortuneflowermain{
@@ -45,6 +80,18 @@ p{
     text-align: center;
 }
 
+.balloons img{
+    height: 50px;
+    float: right;
+}
+.funeral img{
+    height: 50px;
+    float: right;
+}
+.photoweb img{
+    height: 50px;
+    float: right;
+}
 ul {
     list-style-type: square;
 }
@@ -80,8 +127,8 @@ ul li {
     font-size: 60px;
     line-height: 0.1;
     top: -50px;
-    margin-top: -145px;
-    margin-left: -900px;
+    margin-top: 5%;
+    margin-left: 0%;
 }
 @font-face {
     font-family: myFont;
@@ -114,7 +161,7 @@ p{
     color: rgb(11, 13, 16);
 }
 .gmailcolor{
-    color: #a8630a;
+    color: #090638;
 }
 .modal{
     display: none;
@@ -170,7 +217,6 @@ p{
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
-    box-sizing: border-box;
 }
 .moving{
     animation: textobject 1100s linear infinite;
@@ -189,8 +235,8 @@ p{
     }
 }
 .inputmessage{
-    width: 670px;
-    height: 100px;
+    width: 90%;
+    height: 140px;
     position: center;
     align-items: center;
     background: linear-gradient(to right, #0cc660,#0a66a8);
@@ -201,7 +247,7 @@ input::placeholder{
   font-size: large;
 }
 .textname{
-    width: 670px;
+    width: 90%;
     height: 30px;
     position: center;
     align-items: center;
@@ -209,7 +255,7 @@ input::placeholder{
     border-radius: 5px;
 }
 .textemail{
-    width: 670px;
+    width: 90%;
     height: 30px;
     position: center;
     align-items: center;
@@ -227,7 +273,7 @@ input::placeholder{
     text-align: center;
 }
 .classsubmit{
-   width: 9%;
+   width: 16%;
    margin: 15px auto 0;
    background: linear-gradient(to right, #0cc660,#0a66a8);
    color: white;
