@@ -1,39 +1,46 @@
-
-/*.topnav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: none;
-  flex-wrap: wrap; 
-  height: auto;    
-  padding: 10px 0;
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(31, 75, 13);
+    z-index: 1005;
+    box-shadow: 0 2px 5px rgba(rgb(53, 49, 49), rgb(0, rgba(50, 50, 223, 0.229)), blue, alpha);
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 15px 0;
+}
+nav ul li{
+    margin: 0 15px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+nav ul li a:hover{
+    background-color: rgb(57, 57, 56);
+}
+html {
+  scroll-behavior: smooth;
 }
 
-.topnav a {
-  color: #f2f2f2;
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 20px;
-  border-radius: 5px;
-  margin: 5px;
-  transition: background-color 0.3s;
-}
-
-.topnav a:hover {
-  background-color: green;
-}
-
-@media screen and (max-width: 768px) {
-  .topnav {
-    flex-direction: column; 
-    align-items: center;    
-  }
-
-  .topnav a {
-    width: 100%;            
+section{
+    min-height: 90vh;
+    padding: 80px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-  }*/
-body {
+}
+body{
     font-family: Arial, sans-serif;
     margin: 20px;
     background-color: #f9f9f9;
@@ -148,14 +155,15 @@ p{
     text-align: center;
 }
 .aboutus{
-    align-items: justify;
-    text-align: center;
-    color: blueviolet;
+    clear: both;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .aboutustext{
-    width: 150;
+    width: 100%;
     margin:0 0 5% auto;
-    text-align: center;
 }
 .infotext{
     color: rgb(11, 13, 16);
@@ -219,7 +227,7 @@ p{
     white-space: nowrap;
 }
 .moving{
-    animation: textobject 1100s linear infinite;
+    animation: textobject 6000s linear infinite;
     display: inline-block;
 }
 .movingobject{
@@ -310,4 +318,32 @@ input{
 .madeant{
     text-align: center;
     align-items: center;
+}
+.mainheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+    position: relative;
+    z-index: 1000;
+}
+.logocontainer{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 3% auto;
+}
+.logo {
+    width: 90px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* Текст логотипа */
+.logotext {
+    font-family: myFont;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
 }
