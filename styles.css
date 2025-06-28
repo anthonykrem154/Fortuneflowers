@@ -227,7 +227,7 @@ p{
     white-space: nowrap;
 }
 .moving{
-    animation: textobject 6000s linear infinite;
+    animation: textobject 13000s linear infinite;
     display: inline-block;
 }
 .movingobject{
