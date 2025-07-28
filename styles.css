@@ -281,6 +281,7 @@ input::placeholder{
 .MessageText{
     align-items: center;
     text-align: center;
+    width: 100%;
 }
 .classsubmit{
    width: 16%;
