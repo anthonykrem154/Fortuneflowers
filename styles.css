@@ -272,6 +272,10 @@ input::placeholder{
     background: linear-gradient(to right, #0cc660,#0a66a8);
     border-radius: 5px;
 }
+.orderclass{
+    color: #15e4ff;
+    font-size: large;
+}
 .contacttext{
     align-items: center;
     align-content: center;
