@@ -265,11 +265,18 @@
     transform: scale(1.05);
     transition: transform 0.3s, box-shadow 0.3s;
 }
-.logo-container{
-position: fixed;
-left: 270px;
-top: -0.1px;
+/* Default for desktop */
+.logo-container {
+    position: fixed;
+    left: 255px;
+    top: 15px;
+}
 
+/* Hide logo on mobile devices  so no when can see:anthony*/
+@media (max-width: 768px) {
+    .logo-container {
+        display: none;
+    }
 }
 
     </style>
