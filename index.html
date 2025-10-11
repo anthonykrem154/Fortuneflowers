@@ -463,6 +463,23 @@ body {
 .cursor-hover .custom-cursor {
   transform: translate(-50%, -50%) scale(1.2);
 }
+/* Fix mobile header overlap */
+@media (max-width: 768px) {
+  section {
+    padding-top: 130px; /* adds space so content isn’t covered by menu */
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
 
 
 /* CSS-END */
