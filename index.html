@@ -266,11 +266,26 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 /* Default for desktop */
-.logo-container {
-    position: fixed;
-    left: 255px;
-    top: 15px;
+/* Logo and title next to each other */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between logo and title */
 }
+
+.logo-img {
+  width: 55px;
+  height: auto;
+  border-radius: 6px; /* optional for smoother corners */
+}
+
+nav h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+}
+
 
 /* Hide logo on mobile devices  so no when can see:anthony*/
 @media (max-width: 768px) {
@@ -332,34 +347,80 @@ body {
 @keyframes pageLoad {
   to { opacity: 1; }
 }
+/* ---- Simple Green Circle Cursor with Center Dot ---- */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #00ff66;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s linear;
+}
+
+/* Center dot inside the circle */
+.custom-cursor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: #00ff66;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hide system cursor on desktop only */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+/* Slight zoom on hover */
+.cursor-hover .custom-cursor {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+
 /* CSS-END */
     </style>
 </head>
 
 <body>
+<div class="custom-cursor-ring" id="cursorRing"></div>
+<div class="custom-cursor" id="cursorDot"></div>
+
+
     <!-- Floating Call Button -->
 <a href="tel:+17186459594" class="call-button" title="Call Us">
   📞 Call Us
 </a>
 
     <!-- Header & Menu -->
-    <header>
-        <div class="logo-container">
-            <img src="flower logo fgotune gflowers.png" width="80px" alt="Fortune Flowers Logo">
-        </div>
-        <div class="container">
-            <nav>
-                <h1>Fortune Flowers</h1>
-                <ul>
-                    <li><a href="#catalog">Flower Catalog</a></li>
-                    <li><a href="#offer">What We Offer</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>   
-            </nav>
-        </div>
-    </header>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo-title">
+        <img src="flower logo fgotune gflowers.png" alt="Fortune Flowers Logo" class="logo-img">
+        <h1>Fortune Flowers</h1>
+      </div>
+      <ul>
+        <li><a href="#catalog">Flower Catalog</a></li>
+        <li><a href="#offer">What We Offer</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
     <!-- Flower Categories / Photo Links -->
 <section id="categories">
     <h2 style="text-align:center; color:rgb(22, 48, 12); margin-bottom: 40px;">Explore Our Collections</h2>
@@ -493,6 +554,37 @@ body {
     <footer>
         <p>&copy; 2004 Fortune Flowers | Address: 706 Kings Hwy, Brooklyn, NY 11223| Email: Fortune706@yahoo.com</p>
     </footer>
+<script>
+(function() {
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  const selector = 'a, button, input, textarea, select, .flower-card, .category-card';
+  
+  if (window.matchMedia('(pointer: coarse)').matches) return; // skip on touch devices
+  
+  document.addEventListener('mousemove', e => {
+    const x = e.clientX;
+    const y = e.clientY;
+    dot.style.transform = `translate(${x}px, ${y}px)`;
+    ring.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(selector)) document.body.classList.add('cursor-hover');
+    else document.body.classList.remove('cursor-hover');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = 0;
+    ring.style.opacity = 0;
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = 1;
+    ring.style.opacity = 1;
+  });
+})();
+</script>
+
 
 </body>
 </html>
