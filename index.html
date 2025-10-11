@@ -52,7 +52,7 @@ nav ul li {
   margin-left: 20px;
 }
 nav ul li a {
-  text-decoration: none;
+  text-decoration: underline;
   color: white;
   font-weight: bold;
   transition: color 0.3s;
@@ -309,6 +309,83 @@ body {
     font-size: 1rem;
   }
 }
+.signup-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.signup-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+.signup-content {
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+.signup-content h2 {
+  color: rgb(22,48,12);
+  margin-bottom: 10px;
+}
+.signup-content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+.signup-content input {
+  padding: 10px;
+  width: 90%;
+  border: 2px solid rgb(22,48,12);
+  border-radius: 25px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.signup-content button {
+  background-color: rgb(22,48,12);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.signup-content button:hover {
+  background-color: #62abf0;
+}
+.close-popup {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: rgb(31,75,13);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+.close-popup:hover {
+  background-color: #62abf0;
+}
+
 
 
 
@@ -316,7 +393,21 @@ body {
 </head>
 
 <body>
-<a href="tel:+17186459594" class="call-button" title="Call Us">📞 Call Us</a>
+<div id="signup-popup" class="signup-popup">
+  <div class="signup-content">
+    <button class="close-popup" onclick="closeSignup()">×</button>
+    <h2>🌸 Welcome to Fortune Flowers!</h2>
+    <p>Sign up with your phone number to receive special offers & updates.</p>
+    <form id="signupForm">
+      <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+
+
+  <a href="tel:+17186459594" class="call-button" title="Call Us">📞 Call Us</a>
 <button class="hours-button" onclick="toggleHours()">🕒 Hours</button>
 
 <div id="hours-popup" class="hours-popup">
@@ -456,6 +547,42 @@ function updateOpenStatus() {
 updateOpenStatus();
 setInterval(updateOpenStatus, 60000);
 </script>
+<script>
+window.addEventListener("load", () => {
+  if (!localStorage.getItem("signedUp")) {
+    document.getElementById("signup-popup").classList.add("active");
+  }
+});
+
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const number = document.getElementById("phoneNumber").value;
+  alert(`🌷 Thank you, ${number}! We'll be in touch soon.`);
+  localStorage.setItem("signedUp", "true");
+  document.getElementById("signup-popup").classList.remove("active");
+});
+
+function closeSignup() {
+  localStorage.setItem("signedUp", "true");
+  document.getElementById("signup-popup").classList.remove("active");
+}
+fetch("http://localhost:3000/send-sms", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ phone: number })
+})
+.then(res => res.json())
+.then(data => {
+  if (data.success) {
+    alert("🌷 Thank you! A confirmation text has been sent to your phone.");
+  } else {
+    alert("⚠️ Could not send text. Try again later.");
+  }
+})
+.catch(() => alert("⚠️ Could not connect to SMS server."));
+
+</script>
+
 
 </body>
 </html>
