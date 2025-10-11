@@ -505,6 +505,13 @@ body {
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+    <form action="/api/messages" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
   </div>
 </section>
 
@@ -583,6 +590,46 @@ fetch("http://localhost:3000/send-sms", {
 
 </script>
 
+<style>
+#adminUnlockMsg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(31, 75, 13, 0.95);
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2000;
+  pointer-events: none;
+}
+</style>
+
+<div id="adminUnlockMsg">🌸 Admin Login Unlocked</div>
+
+<script>
+(function () {
+  var seq = "";
+  var code = "11235";
+  var msg = document.getElementById("adminUnlockMsg");
+  window.addEventListener("keydown", function (e) {
+    var tag = document.activeElement && document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || document.activeElement.isContentEditable) return;
+    seq = (seq + e.key).slice(-code.length);
+    if (seq === code) {
+      msg.style.opacity = "1";
+      setTimeout(function () {
+        msg.style.opacity = "0";
+        window.location.href = "admin.html";
+      }, 2000);
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
