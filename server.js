@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Simulated database for credentials and persistent token
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "yourStrongPassword123";
+const ADMIN_USER = "anthonykremyanskiy";
+const ADMIN_PASS = "Corbin134134+";
 let GLOBAL_TOKEN = null; // stores token shared across browsers
 
 // Login route
