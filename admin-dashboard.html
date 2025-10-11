@@ -119,10 +119,36 @@
     <p>No orders yet. Connect your order form or database later.</p>
   </div>
 
-  <div class="card" id="messages">
-    <h2>Customer Messages</h2>
-    <p>Messages submitted from the site’s contact form can appear here once connected.</p>
-  </div>
+<div class="card" id="messages">
+  <h2>Customer Messages</h2>
+  <div id="messagesList">Loading messages...</div>
+</div>
+
+<script>
+async function loadMessages() {
+  const res = await fetch("/api/messages");
+  if (!res.ok) {
+    document.getElementById("messagesList").innerText = "Access denied or no messages.";
+    return;
+  }
+  const msgs = await res.json();
+  if (!msgs.length) {
+    document.getElementById("messagesList").innerText = "No messages yet.";
+    return;
+  }
+  document.getElementById("messagesList").innerHTML = msgs.map(
+    m => `
+      <div style="border-bottom:1px solid #ccc;padding:8px 0;">
+        <b>${m.name}</b> (${m.email})<br>
+        <small>${new Date(m.date).toLocaleString()}</small><br>
+        <p>${m.message}</p>
+      </div>
+    `
+  ).join("");
+}
+loadMessages();
+</script>
+
 
   <div class="card" id="settings">
     <h2>Settings</h2>
