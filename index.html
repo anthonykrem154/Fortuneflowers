@@ -1,308 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="flower logo fgotune gflowers.png">
-    <title>Fortune Flowers</title>
-    <style>
-        /* Reset some defaults */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: rgb(47, 71, 71);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: rgb(31, 75, 13);
-            color: white;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            color: black;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav h1 {
-            font-family: 'Georgia', serif;
-            font-size: 2rem;
-            color: white;
-
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ffe0e6;
-        }
-
-        section {
-            padding: 100px 0 50px 0;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            color:  rgb(22, 48, 12);
-        }
-
-        .flowers {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .flower-card {
-            background-color: #fff0f5;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-
-        .flower-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .contact-form input, 
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .contact-form button {
-            background-color: rgb(22, 48, 12);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .contact-form button:hover {
-            background-color: rgb(22, 48, 12);
-        }
-
-        footer {
-            background-color: rgb(22, 48, 12);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-        /* Center all main content */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="flower logo fgotune gflowers.png">
+<title>Fortune Flowers</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+body {
+  background-color: rgb(47, 71, 71);
+  color: #333;
+  line-height: 1.6;
+}
+header {
+  background-color: rgb(31, 75, 13);
+  color: white;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center; /* Center text and child elements */
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  color: black;
 }
-
-/* Center category cards in grid */
-.category-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    justify-items: center; /* Center each card horizontally */
-    margin-bottom: 50px;
-}
-
-.category-card {
-    background-color: #fff0f5;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 200px; /* Fixed width for consistent centering */
-}
-
-.category-card a {
-    text-decoration: none;
-    color: #333;
-}
-
-.category-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.category-card h3 {
-    font-size: 1.2rem;
-    color: rgb(22, 48, 12);
-}
-
-.category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-}
-
-/* Center Flower Cards */
-.flowers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-items: center; /* Center each flower card */
-}
-
-.flower-card {
-    text-align: center; /* Ensure internal text is centered */
-}
-/* Slide-in from bottom */
-@keyframes slideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Slide-in from left */
-@keyframes slideLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Slide-in from right */
-@keyframes slideRight {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-/* Animation utility classes */
-.animate-slide-up {
-    animation: slideUp 1s ease forwards;
-}
-.animate-slide-left {
-    animation: slideLeft 1s ease forwards;
-}
-.animate-slide-right {
-    animation: slideRight 1s ease forwards;
-}
-.animate-fade-in {
-    animation: fadeIn 1.5s ease forwards;
-}
-
-/* Hover animation for flower cards */
-.flower-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Hover animation for category cards */
-.category-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-/* Default for desktop */
-/* Logo and title next to each other */
-.logo-title {
+nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px; /* space between logo and title */
 }
-
-.logo-img {
-  width: 55px;
-  height: auto;
-  border-radius: 6px; /* optional for smoother corners */
-}
-
 nav h1 {
   font-family: 'Georgia', serif;
   font-size: 2rem;
   color: white;
-  margin: 0;
 }
-
-
-/* Hide logo on mobile devices  so no when can see:anthony*/
-@media (max-width: 768px) {
-    .logo-container {
-        display: none;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+}
+nav ul li {
+  margin-left: 20px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+nav ul li a:hover {
+  color: #ffe0e6;
+}
+section {
+  padding: 100px 0 50px 0;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: rgb(22, 48, 12);
+}
+.flowers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.flower-card {
+  background-color: #fff0f5;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+.flower-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.contact-form button {
+  background-color: rgb(22, 48, 12);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.contact-form button:hover {
+  background-color: rgb(22, 48, 12);
+}
+footer {
+  background-color: rgb(22, 48, 12);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.category-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-bottom: 50px;
+}
+.category-card {
+  background-color: #fff0f5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 200px;
+}
+.category-card a {
+  text-decoration: none;
+  color: #333;
+}
+.category-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.category-card h3 {
+  font-size: 1.2rem;
+  color: rgb(22, 48, 12);
+}
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+.flowers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.flower-card {
+  text-align: center;
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+.flower-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.category-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-img {
+  width: 55px;
+  height: auto;
+  border-radius: 6px;
 }
 html {
   scroll-behavior: smooth;
 }
-
 @media (max-width: 768px) {
-  nav ul { flex-wrap: wrap; justify-content: center; }
-  h2 { font-size: 1.5rem; }
-  .flower-card img { max-height: 200px; object-fit: cover; }
+  nav ul {flex-wrap: wrap; justify-content: center;}
+  h2 {font-size: 1.5rem;}
+  .flower-card img {max-height: 200px; object-fit: cover;}
+  section {padding-top: 130px;}
+  header {position: sticky; top: 0;}
 }
-/* Floating Phone Button */
 .call-button {
   position: fixed;
   bottom: 20px;
@@ -316,12 +211,11 @@ html {
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
   z-index: 999;
+  animation: pulse 2s infinite;
 }
-/* Floating Business Hours Button :anthony */
-/* Floating Business Hours Button :anthony */
 .hours-button {
   position: fixed;
-  bottom: 150px; /* moved higher so it doesn’t touch the call button :anthony */
+  bottom: 150px;
   right: 20px;
   background-color: rgb(22, 48, 12);
   color: white;
@@ -334,14 +228,10 @@ html {
   transition: background-color 0.3s, transform 0.2s;
   z-index: 998;
 }
-
 .hours-button:hover {
   background-color: #62abf0;
   transform: scale(1.05);
 }
-
-
-/* Business Hours Popup :anthony */
 .hours-popup {
   display: none;
   position: fixed;
@@ -355,30 +245,25 @@ html {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   z-index: 999;
 }
-
 .hours-popup.active {
   display: block;
   animation: fadeIn 0.3s ease forwards;
 }
-
 .hours-content h3 {
   margin-bottom: 10px;
   color: rgb(22, 48, 12);
 }
-
 .hours-content ul {
   list-style: none;
   padding: 0;
   margin: 0 0 10px 0;
   text-align: left;
 }
-
 .hours-content li {
   margin-bottom: 5px;
   color: #333;
   font-size: 14px;
 }
-
 .close-hours {
   background-color: rgb(22, 48, 12);
   color: white;
@@ -389,57 +274,24 @@ html {
   font-size: 14px;
   transition: background-color 0.3s;
 }
-
 .close-hours:hover {
   background-color: #62abf0;
 }
-
-
-.call-button:hover {
-  background-color: #62abf0;
-  transform: scale(1.1);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
-}
-
-/* Hide the button on very small screens if needed anthony*/
-@media (max-width: 350px) {
-  .call-button {
-    display: none;
-  }
-}
 @keyframes pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(22,48,12,0.4); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(22,48,12,0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(22,48,12,0); }
+  0% {transform: scale(1); box-shadow: 0 0 0 0 rgba(22,48,12,0.4);}
+  70% {transform: scale(1.1); box-shadow: 0 0 0 15px rgba(22,48,12,0);}
+  100% {transform: scale(1); box-shadow: 0 0 0 0 rgba(22,48,12,0);}
 }
-
-.call-button {
-  animation: pulse 2s infinite;
+@media (max-width: 350px) {
+  .call-button {display: none;}
 }
 body {
   opacity: 0;
   animation: pageLoad 1s ease forwards;
 }
-
 @keyframes pageLoad {
-  to { opacity: 1; }
+  to {opacity: 1;}
 }
-/* ---- Simple Green Circle Cursor with Center Dot anthony---- */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 28px;
-  height: 28px;
-  border: 2px solid #00ff66;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s linear;
-}
-
-/* Center dot inside the circle anthony */
 .custom-cursor::before {
   content: "";
   position: absolute;
@@ -452,53 +304,13 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Hide system cursor on desktop only */
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-}
-
-/* Slight zoom on hover */
-.cursor-hover .custom-cursor {
-  transform: translate(-50%, -50%) scale(1.2);
-}
-/* Fix mobile header overlap */
-@media (max-width: 768px) {
-  section {
-    padding-top: 130px; /* adds space so content isn’t covered by menu */
-  }
-
-  header {
-    position: sticky;
-    top: 0;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-  }
-}
-
-
-/* CSS-END */
-    </style>
+</style>
 </head>
 
 <body>
-<div class="custom-cursor-ring" id="cursorRing"></div>
-<div class="custom-cursor" id="cursorDot"></div>
-
-
-    <!-- Floating Call Button anthony -->
-<a href="tel:+17186459594" class="call-button" title="Call Us">
-  📞 Call Us
-</a>
-<!-- Floating Business Hours Button -->
+<a href="tel:+17186459594" class="call-button" title="Call Us">📞 Call Us</a>
 <button class="hours-button" onclick="toggleHours()">🕒 Hours</button>
 
-<!-- Business Hours Popup anthony -->
 <div id="hours-popup" class="hours-popup">
   <div class="hours-content">
     <h3>Business Hours</h3>
@@ -515,15 +327,13 @@ body {
   </div>
 </div>
 
-
-    <!-- Header & Menu  anthony-->
 <header>
   <div class="container">
     <nav>
-      <div class="logo-title">
-        <img src="flower logo fgotune gflowers.png" alt="Fortune Flowers Logo" class="logo-img">
-<h1>Fortune Flowers</h1>
-<p id="openStatus" class="open-status"></p>
+<div class="logo-title" onclick="scrollToTop()" style="cursor: pointer;">
+  <img src="flower logo fgotune gflowers.png" alt="Fortune Flowers Logo" class="logo-img" onclick="scrollToTop()">
+  <h1 onclick="scrollToTop()">Fortune Flowers</h1>
+</div>
 
       <ul>
         <li><a href="#catalog">Flower Catalog</a></li>
@@ -536,205 +346,80 @@ body {
   </div>
 </header>
 
-    <!-- Flower Categories / Photo Links anthony -->
 <section id="categories">
-    <h2 style="text-align:center; color:rgb(22, 48, 12); margin-bottom: 40px;">Explore Our Collections</h2>
-    <div class="container category-links">
-        <div class="category-card">
-            <a href="photoimg.html">
-                <h3>Mixed Flowers</h3>
-            </a>
-        </div>
-        <div class="category-card">
-            <a href="funeralsection.html">
-                <h3>Funeral</h3>
-            </a>
-        </div>
-        <div class="category-card">
-            <a href="weddingphotoshere.html">
-                <h3>Wedding</h3>
-            </a>
-        </div>
-        <div class="category-card">
-            <a href="balloonphotos.html">
-                <h3>Balloons</h3>
-            </a>
-        </div>
-    </div>
+  <h2>Explore Our Collections</h2>
+  <div class="container category-links">
+    <div class="category-card"><a href="photoimg.html"><h3>Mixed Flowers</h3></a></div>
+    <div class="category-card"><a href="funeralsection.html"><h3>Funeral</h3></a></div>
+    <div class="category-card"><a href="weddingphotoshere.html"><h3>Wedding</h3></a></div>
+    <div class="category-card"><a href="balloonphotos.html"><h3>Balloons</h3></a></div>
+  </div>
 </section>
 
-
-    <!-- Flower Catalog anthony -->
 <section id="catalog">
-    <h2>Flower Catalog</h2>
-    <div class="container flowers">
-        <div class="flower-card">
-            <img src="Screenshot 2024-12-09 203857.png" alt="Roses" title="Roses">
-            <h3>Roses, Amaryllis, Hydrangeas, Stock Flowers</h3>
-            <p><strong>From $150+</strong></p>
-            <p>Various colors and meanings</p>
-        </div>
-
-        <div class="flower-card">
-            <img src="Screenshot 2025-01-29 214455.png" alt="Lilies" title="Lilies">
-            <h3>Calla Lilies, Cymbidium Orchids, Holland Hydrangeas, Dahlias, Vanda Orchids</h3>
-            <p><strong>From $500+</strong></p>
-            <p>Elegance & purity</p>
-        </div>
-
-        <div class="flower-card">
-            <img src="Screenshot 2025-01-29 215121.png" alt="Balloons" title="Balloons">
-            <h3>Balloons</h3>
-            <p><strong>From $150+</strong></p>
-            <p>Spring favorites</p>
-        </div>
-
-        <div class="flower-card">
-            <img src="Screenshot 2025-01-29 214648.png" alt="Orchids" title="Orchids">
-            <h3>Phalaenopsis Orchids, Peonies, Hydrangeas, Stock Flowers</h3>
-            <p><strong>From $250+</strong></p>
-            <p>Exotic and luxurious</p>
-        </div>
-
-        <div class="flower-card">
-            <img src="Screenshot 2025-01-29 214253.png" alt="Sunflowers" title="Sunflowers">
-            <h3>Sunflowers, Anthurium, Vanda Orchids</h3>
-            <p><strong>From $150+</strong></p>
-            <p>Bright & cheerful</p>
-        </div>
-
-        <div class="flower-card">
-            <img src="Screenshot 2025-01-29 214112.png" alt="Mixed Bouquets" title="Mixed Bouquets">
-            <h3>Headbox, Gerbera, Peonies, Chamomile, Green Hydrangeas</h3>
-            <p><strong>From $100+</strong></p>
-            <p>Perfect combinations</p>
-        </div>
-    </div>
+  <h2>Flower Catalog</h2>
+  <div class="container flowers">
+    <div class="flower-card"><img src="Screenshot 2024-12-09 203857.png" alt="Roses"><h3>Roses, Amaryllis, Hydrangeas, Stock Flowers</h3><p><strong>From $150+</strong></p><p>Various colors and meanings</p></div>
+    <div class="flower-card"><img src="Screenshot 2025-01-29 214455.png" alt="Lilies"><h3>Calla Lilies, Cymbidium Orchids, Holland Hydrangeas, Dahlias, Vanda Orchids</h3><p><strong>From $500+</strong></p><p>Elegance & purity</p></div>
+    <div class="flower-card"><img src="Screenshot 2025-01-29 215121.png" alt="Balloons"><h3>Balloons</h3><p><strong>From $150+</strong></p><p>Spring favorites</p></div>
+    <div class="flower-card"><img src="Screenshot 2025-01-29 214648.png" alt="Orchids"><h3>Phalaenopsis Orchids, Peonies, Hydrangeas, Stock Flowers</h3><p><strong>From $250+</strong></p><p>Exotic and luxurious</p></div>
+    <div class="flower-card"><img src="Screenshot 2025-01-29 214253.png" alt="Sunflowers"><h3>Sunflowers, Anthurium, Vanda Orchids</h3><p><strong>From $150+</strong></p><p>Bright & cheerful</p></div>
+    <div class="flower-card"><img src="Screenshot 2025-01-29 214112.png" alt="Mixed Bouquets"><h3>Headbox, Gerbera, Peonies, Chamomile, Green Hydrangeas</h3><p><strong>From $100+</strong></p><p>Perfect combinations</p></div>
+  </div>
 </section>
 
+<section id="offer">
+  <h2>What We Offer</h2>
+  <div class="container">
+    <ul>
+      <li>Seasonal Specials</li>
+      <li>Custom Arrangements</li>
+      <li>Add-ons & Gifts</li>
+      <li>Pricing & Delivery Info</li>
+      <li>Contact & Ordering Details</li>
+    </ul>
+  </div>
+</section>
 
-    <!-- What We Offer anthiny -->
-    <section id="offer">
-        <h2>What We Offer</h2>
-        <div class="container">
-            <ul>
-                <li> Seasonal Specials</li>
-                <li> Custom Arrangements</li>
-                <li> Add-ons & Gifts</li>
-                <li> Pricing & Delivery Info</li>
-                <li> Contact & Ordering Details</li>
-            </ul>
-        </div>
-    </section>
+<section id="reviews">
+  <h2>Reviews</h2>
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-b1c3af70-7b08-459e-9009-cebc8051d326" data-elfsight-app-lazy></div>
+</section>
 
-    <!-- Reviews anthony -->
-    <section id="reviews">
-        <h2>Reviews</h2>
-   <script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-b1c3af70-7b08-459e-9009-cebc8051d326" data-elfsight-app-lazy></div>
-    </section>
+<section id="about">
+  <h2>About Us</h2>
+  <div class="container">
+    <h3><b>Dear Friends,</b> Welcome to Fortune Flowers & Gifts, Inc.<br>We are a unique company, established on the principles of quality customer service and "Always treating others as you would wanted to be treated yourself." We believe that the most important ingredient in buying or selling any goods and services is trust. All of us at Fortune Flowers & Gifts share the same goals. We embrace competition. It drives us to be the "Best of the Best" and that is why we experiment for countless hours to develop the perfect style of Flowers & Gift creations. Welcome and always believe that we will ensure that the process of doing business with us is enjoyable, convenient and comfortable. Be confident. You will experience the "Best of the Best"</h3>
+  </div>
+</section>
 
-    <!-- About Us anthhony -->
-    <section id="about">
-        <h2>About Us</h2>
-        <div class="container">
-        <h3><b>Dear Friends,</b> Welcome to Fortune Flowers & Gifts, Inc.
-            <br> We are a unique company, established on the principles of quality 
-            <br>customer service and "Always treating others as you would wanted to 
-            <br>be treated yourself." We believe that the most important ingredient
-             <br>in buying or selling any goods and services is trust. All of us at Fortune
-              <br>Flowers & Gifts share the same goals. We embrace competition. It drives us
-               <br>to be the "Best of the Best" and that is why we experiment for countless hours
-                <br>to develop the perfect style of Flowers & Gift creations. Welcome and always
-                 <br>believe that we will ensure that the process of doing business with us is enjoyable,
-                  <br>convenient and comfortable. Be confident. You will experience the"Best of the Best"</h3>
-        </div>
-    </section>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="container contact-form">
+    <form action="https://formspree.io/f/mldnrrpe" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
 
-    <!-- Contact Us anthony-->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <div class="container contact-form">
-<form action="https://formspree.io/f/mldnrrpe" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-</form>
-
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2004 Fortune Flowers | Address: 706 Kings Hwy, Brooklyn, NY 11223| Email: Fortune706@yahoo.com</p>
-    </footer>
+<footer>
+  <p>&copy; 2004 Fortune Flowers | Address: 706 Kings Hwy, Brooklyn, NY 11223 | Email: Fortune706@yahoo.com</p>
+</footer>
 <script>
-(function() {
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  const selector = 'a, button, input, textarea, select, .flower-card, .category-card';
-  
-  if (window.matchMedia('(pointer: coarse)').matches) return; // skip on touch devices
-  
-  document.addEventListener('mousemove', e => {
-    const x = e.clientX;
-    const y = e.clientY;
-    dot.style.transform = `translate(${x}px, ${y}px)`;
-    ring.style.transform = `translate(${x}px, ${y}px)`;
-  });
-
-  document.addEventListener('mouseover', e => {
-    if (e.target.closest(selector)) document.body.classList.add('cursor-hover');
-    else document.body.classList.remove('cursor-hover');
-  });
-
-  document.addEventListener('mouseleave', () => {
-    dot.style.opacity = 0;
-    ring.style.opacity = 0;
-  });
-  document.addEventListener('mouseenter', () => {
-    dot.style.opacity = 1;
-    ring.style.opacity = 1;
-  });
-})();
-</script>
-<script>
-function updateOpenStatus() {
-  const openStatus = document.getElementById("openStatus");
-  const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours() + now.getMinutes() / 60;
-
-  let open = false;
-
-  // Business hours
-  if (day === 0) open = hour >= 10 && hour < 17;           // Sunday
-  else if (day === 6) open = hour >= 11 && hour < 17;       // Saturday
-  else if (day === 5) open = hour >= 9 && hour < 18;        // Friday
-  else if (day >= 1 && day <= 4) open = hour >= 10 && hour < 17.5; // Mon–Thu
-
-  if (open) {
-    openStatus.textContent = "✅ We’re Open Now";
-    openStatus.style.color = "#00ff66";
-  } else {
-    openStatus.textContent = "❌ We’re Closed";
-    openStatus.style.color = "#ff5555";
-  }
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// Run immediately and then every 60 seconds
-updateOpenStatus();
-setInterval(updateOpenStatus, 60000);
 </script>
-
 <script>
 function toggleHours() {
   const popup = document.getElementById("hours-popup");
   popup.classList.toggle("active");
 }
 </script>
-
 
 </body>
 </html>
