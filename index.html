@@ -292,17 +292,24 @@ body {
 @keyframes pageLoad {
   to {opacity: 1;}
 }
-.custom-cursor::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  background-color: #00ff66;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+.open-status-container {
+  text-align: center;
+  margin-top: 10px;
 }
+
+#openStatus {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ff66;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  #openStatus {
+    font-size: 1rem;
+  }
+}
+
 
 </style>
 </head>
@@ -333,6 +340,9 @@ body {
 <div class="logo-title" onclick="scrollToTop()" style="cursor: pointer;">
   <img src="flower logo fgotune gflowers.png" alt="Fortune Flowers Logo" class="logo-img" onclick="scrollToTop()">
   <h1 onclick="scrollToTop()">Fortune Flowers</h1>
+</div>
+<div class="open-status-container">
+  <p id="openStatus">Loading store hours...</p>
 </div>
 
       <ul>
@@ -419,6 +429,31 @@ function toggleHours() {
   const popup = document.getElementById("hours-popup");
   popup.classList.toggle("active");
 }
+</script>
+<script>
+function updateOpenStatus() {
+  const openStatus = document.getElementById("openStatus");
+  const now = new Date();
+  const day = now.getDay();
+  const hour = now.getHours() + now.getMinutes() / 60;
+  let open = false;
+
+  if (day === 0) open = hour >= 10 && hour < 17;          // Sunday
+  else if (day === 6) open = hour >= 11 && hour < 17;      // Saturday
+  else if (day === 5) open = hour >= 9 && hour < 18;       // Friday
+  else if (day >= 1 && day <= 4) open = hour >= 10 && hour < 17.5; // Mon–Thu
+
+  if (open) {
+    openStatus.textContent = "✅ We’re Open Now";
+    openStatus.style.color = "#00ff66";
+  } else {
+    openStatus.textContent = "❌ We’re Closed";
+    openStatus.style.color = "#ff4444";
+  }
+}
+
+updateOpenStatus();
+setInterval(updateOpenStatus, 60000);
 </script>
 
 </body>
