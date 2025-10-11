@@ -1,35 +1,65 @@
-// server.js
 import express from "express";
 import bodyParser from "body-parser";
-import twilio from "twilio";
+import fs from "fs";
 import cors from "cors";
 
 const app = express();
-app.use(bodyParser.json());
+const PORT = 3000;
+
+// Enable CORS so all browsers/devices can connect
 app.use(cors());
 
-// Replace these with your Twilio credentials
-const accountSid = "AC72872f00d04ffc7c1526e7c79f558253";
-const authToken = "8ba96d54207271253472fd29ea91a666";
-const twilioNumber = "+18889614823";
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-const client = twilio(accountSid, authToken);
+// Simulated database for credentials and persistent token
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "yourStrongPassword123";
+let GLOBAL_TOKEN = null; // stores token shared across browsers
 
-app.post("/send-sms", async (req, res) => {
-  const { phone } = req.body;
+// Login route
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
 
-  try {
-    await client.messages.create({
-      body: "🌸 Thank you for signing up with Fortune Flowers! You’ll now receive our latest offers and updates.",
-      from: twilioNumber,
-      to: phone
-    });
-    res.status(200).json({ success: true, message: "Text sent successfully" });
-  } catch (error) {
-    console.error("Error sending SMS:", error);
-    res.status(500).json({ success: false, message: "Failed to send SMS" });
+  if (username === ADMIN_USER && password === ADMIN_PASS) {
+    GLOBAL_TOKEN = Math.random().toString(36).substring(2); // generate global token
+    res.json({ success: true, token: GLOBAL_TOKEN });
+  } else {
+    res.status(401).json({ success: false, message: "Invalid credentials" });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+// Check token route
+app.post("/verify", (req, res) => {
+  const { token } = req.body;
+  if (token === GLOBAL_TOKEN && token !== null) {
+    res.json({ valid: true });
+  } else {
+    res.status(403).json({ valid: false });
+  }
+});
+
+// Messages API
+app.post("/api/messages", (req, res) => {
+  const file = "messages.json";
+  const data = req.body;
+
+  if (!fs.existsSync(file)) fs.writeFileSync(file, "[]");
+  const messages = JSON.parse(fs.readFileSync(file));
+  messages.push({ ...data, date: new Date().toISOString() });
+  fs.writeFileSync(file, JSON.stringify(messages, null, 2));
+
+  res.json({ success: true });
+});
+
+app.get("/api/messages", (req, res) => {
+  if (!fs.existsSync("messages.json")) return res.json([]);
+  const messages = JSON.parse(fs.readFileSync("messages.json"));
+  res.json(messages);
+});
+
+app.listen(PORT, () =>
+  console.log(`🌸 Fortune Flowers admin running on http://localhost:${PORT}`)
+);
