@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin Dashboard – Fortune Flowers</title>
+<style>
+  :root {
+    --green: #1f4b0d;
+    --pink: #fff0f5;
+    --accent: #00b96f;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--pink);
+    color: #222;
+  }
+
+  header {
+    background: var(--green);
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 16px;
+    font-weight: bold;
+  }
+
+  nav a:hover { text-decoration: underline; }
+
+  main {
+    padding: 24px;
+    display: grid;
+    gap: 24px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    padding: 20px;
+  }
+
+  h2 {
+    color: var(--green);
+    margin-top: 0;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 16px;
+  }
+
+  .stat {
+    background: var(--green);
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .stat h3 { margin: 0 0 6px; font-size: 1.3rem; }
+  .stat p { margin: 0; font-size: 0.9rem; }
+
+  button {
+    background: var(--green);
+    color: #fff;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover { background: #236515; }
+
+  @media (max-width: 600px) {
+    header { flex-direction: column; gap: 8px; text-align: center; }
+    nav a { margin: 0 8px; }
+  }
+</style>
+</head>
+
+<body>
+<header>
+  <h1>🌸 Fortune Flowers Admin Dashboard</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="#orders">Orders</a>
+    <a href="#messages">Messages</a>
+    <a href="#settings">Settings</a>
+  </nav>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Quick Stats</h2>
+    <div class="stats">
+      <div class="stat"><h3 id="ordersCount">0</h3><p>New Orders</p></div>
+      <div class="stat"><h3 id="msgsCount">0</h3><p>Messages</p></div>
+      <div class="stat"><h3 id="visitorsCount">0</h3><p>Visitors Today</p></div>
+    </div>
+  </div>
+
+  <div class="card" id="orders">
+    <h2>Recent Orders</h2>
+    <p>No orders yet. Connect your order form or database later.</p>
+  </div>
+
+  <div class="card" id="messages">
+    <h2>Customer Messages</h2>
+    <p>Messages submitted from the site’s contact form can appear here once connected.</p>
+  </div>
+
+  <div class="card" id="settings">
+    <h2>Settings</h2>
+    <button onclick="logout()">Log Out</button>
+  </div>
+</main>
+
+<script>
+  document.getElementById('ordersCount').textContent = Math.floor(Math.random() * 10);
+  document.getElementById('msgsCount').textContent = Math.floor(Math.random() * 6);
+  document.getElementById('visitorsCount').textContent = 50 + Math.floor(Math.random() * 100);
+
+  function logout() {
+    alert('Logged out successfully!');
+    window.location.href = '/';
+  }
+</script>
+</body>
+</html>
