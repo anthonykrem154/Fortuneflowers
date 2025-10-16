@@ -513,9 +513,14 @@ function toggleHours() {
 <script>
 function updateOpenStatus() {
   const openStatus = document.getElementById("openStatus");
+
+  // Convert visitor's time to New York time (store location)
   const now = new Date();
-  const day = now.getDay();
-  const hour = now.getHours() + now.getMinutes() / 60;
+  const options = { timeZone: "America/New_York" };
+  const nyTime = new Date(now.toLocaleString("en-US", options));
+
+  const day = nyTime.getDay();
+  const hour = nyTime.getHours() + nyTime.getMinutes() / 60;
   let open = false;
 
   if (day === 0) open = hour >= 10 && hour < 17;          // Sunday
@@ -524,10 +529,10 @@ function updateOpenStatus() {
   else if (day >= 1 && day <= 4) open = hour >= 10 && hour < 17.5; // Mon–Thu
 
   if (open) {
-    openStatus.textContent = "✅ We’re Open Now";
+    openStatus.textContent = "✅ We’re Open Now (NY Time)";
     openStatus.style.color = "#00ff66";
   } else {
-    openStatus.textContent = "❌ We’re Closed";
+    openStatus.textContent = "❌ We’re Closed (NY Time)";
     openStatus.style.color = "#ff4444";
   }
 }
@@ -535,6 +540,7 @@ function updateOpenStatus() {
 updateOpenStatus();
 setInterval(updateOpenStatus, 60000);
 </script>
+
 <script>
 window.addEventListener("load", () => {
   if (!localStorage.getItem("signedUp")) {
