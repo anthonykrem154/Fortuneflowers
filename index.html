@@ -4,15 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="flower logo fgotune gflowers.png">
-<link rel="icon" type="image/x-icon" href="flower logo fgotune gflowers.png ">
-<link rel="icon" type="image/png" sizes="32x32" href="flower logo fgotune gflowers.png">
-<link rel="icon" type="image/png" sizes="16x16" href="flower logo fgotune gflowers.png">
-<link rel="apple-touch-icon" sizes="180x180" href="flower logo fgotune gflowers.png">
-<link rel="icon" type="image/png" sizes="192x192" href="flower logo fgotune gflowers.png">
-<link rel="icon" type="image/png" sizes="512x512" href="flower logo fgotune gflowers.png">
 <title>Fortune Flowers</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3270506687391065"
-     crossorigin="anonymous"></script>
 <style>
 * {
   margin: 0;
@@ -74,18 +66,12 @@ section {
 h2 {
   text-align: center;
   margin-bottom: 40px;
-  color: rgb(0, 0, 0);
-  font-size: xx-large;
+  color: rgb(22, 48, 12);
 }
-.container-flowers {
+.flowers {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  justify-content: center;
-  width: 60%;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
 }
 .flower-card {
   background-color: #fff0f5;
@@ -401,39 +387,26 @@ body {
 }
 
 
+
+
 </style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1f4b0d">
-
-<script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("service-worker.js")
-        .then(() => console.log("🌸 Service Worker Registered"))
-        .catch(err => console.error("SW registration failed:", err));
-    });
-  }
-</script>
-<script>
-let deferredPrompt;
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  const btn = document.createElement("button");
-  btn.innerText = "📲 Install Fortune Flowers App";
-  btn.style.cssText = "position:fixed;bottom:20px;left:20px;background:#1f4b0d;color:white;padding:10px 15px;border-radius:10px;border:none;cursor:pointer;";
-  document.body.appendChild(btn);
-
-  btn.addEventListener("click", () => {
-    deferredPrompt.prompt();
-    btn.remove();
-  });
-});
-</script>
-
 </head>
 
 <body>
+<div id="signup-popup" class="signup-popup">
+  <div class="signup-content">
+    <button class="close-popup" onclick="closeSignup()">×</button>
+    <h2>🌸 Welcome to Fortune Flowers!</h2>
+    <p>Sign up with your phone number to receive special offers & updates.</p>
+    <form id="signupForm">
+      <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+
+
   <a href="tel:+17186459594" class="call-button" title="Call Us">📞 Call Us</a>
 <button class="hours-button" onclick="toggleHours()">🕒 Hours</button>
 
@@ -488,7 +461,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
 
 <section id="catalog">
   <h2>Flower Catalog</h2>
-  <div class="container-flowers">
+  <div class="container flowers">
     <div class="flower-card"><img src="Screenshot 2024-12-09 203857.png" alt="Roses"><h3>Roses, Amaryllis, Hydrangeas, Stock Flowers</h3><p><strong>From $150+</strong></p><p>Various colors and meanings</p></div>
     <div class="flower-card"><img src="Screenshot 2025-01-29 214455.png" alt="Lilies"><h3>Calla Lilies, Cymbidium Orchids, Holland Hydrangeas, Dahlias, Vanda Orchids</h3><p><strong>From $500+</strong></p><p>Elegance & purity</p></div>
     <div class="flower-card"><img src="Screenshot 2025-01-29 215121.png" alt="Balloons"><h3>Balloons</h3><p><strong>From $150+</strong></p><p>Spring favorites</p></div>
@@ -502,16 +475,17 @@ window.addEventListener("beforeinstallprompt", (e) => {
   <h2>What We Offer</h2>
   <div class="container">
     <ul>
-      <p>Seasonal Specials</p>
-      <p>Custom Arrangements</p>
-      <p>Add-ons & Gifts</p>
-      <p>Pricing & Delivery Info</p>
-      <p>Contact & Ordering Details</p>
+      <li>Seasonal Specials</li>
+      <li>Custom Arrangements</li>
+      <li>Add-ons & Gifts</li>
+      <li>Pricing & Delivery Info</li>
+      <li>Contact & Ordering Details</li>
     </ul>
   </div>
 </section>
 
 <section id="reviews">
+  <h2>Reviews</h2>
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
   <div class="elfsight-app-b1c3af70-7b08-459e-9009-cebc8051d326" data-elfsight-app-lazy></div>
 </section>
@@ -532,18 +506,18 @@ window.addEventListener("beforeinstallprompt", (e) => {
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-  </div>
-  <div class="container-phone-number">
-    <br>
-    <h2>Call us at:718-645-9594</h2>
+    <form action="/api/messages" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
   </div>
 </section>
 
 <footer>
   <p>&copy; 2004 Fortune Flowers | Address: 706 Kings Hwy, Brooklyn, NY 11223 | Email: Fortune706@yahoo.com</p>
-     <small>
-      made by anthony
-    </small>
 </footer>
 <script>
 function scrollToTop() {
@@ -559,14 +533,9 @@ function toggleHours() {
 <script>
 function updateOpenStatus() {
   const openStatus = document.getElementById("openStatus");
-
-  // Convert visitor's time to New York time (store location)
   const now = new Date();
-  const options = { timeZone: "America/New_York" };
-  const nyTime = new Date(now.toLocaleString("en-US", options));
-
-  const day = nyTime.getDay();
-  const hour = nyTime.getHours() + nyTime.getMinutes() / 60;
+  const day = now.getDay();
+  const hour = now.getHours() + now.getMinutes() / 60;
   let open = false;
 
   if (day === 0) open = hour >= 10 && hour < 17;          // Sunday
@@ -575,10 +544,10 @@ function updateOpenStatus() {
   else if (day >= 1 && day <= 4) open = hour >= 10 && hour < 17.5; // Mon–Thu
 
   if (open) {
-    openStatus.textContent = "✅ We’re Open Now (NY Time)";
+    openStatus.textContent = "✅ We’re Open Now";
     openStatus.style.color = "#00ff66";
   } else {
-    openStatus.textContent = "❌ We’re Closed (NY Time)";
+    openStatus.textContent = "❌ We’re Closed";
     openStatus.style.color = "#ff4444";
   }
 }
@@ -586,7 +555,6 @@ function updateOpenStatus() {
 updateOpenStatus();
 setInterval(updateOpenStatus, 60000);
 </script>
-
 <script>
 window.addEventListener("load", () => {
   if (!localStorage.getItem("signedUp")) {
@@ -663,6 +631,18 @@ fetch("http://localhost:3000/send-sms", {
   });
 })();
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3270506687391065"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3270506687391065"
+     data-ad-slot="9717767050"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3270506687391065"
+     crossorigin="anonymous"></script>
 </body>
 </html>
-
