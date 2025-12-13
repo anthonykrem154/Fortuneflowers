@@ -480,6 +480,7 @@ body {
     <div class="category-card"><a href="photoimg.html"><h3>Mixed Flowers</h3></a></div>
     <div class="category-card"><a href="funeralsection.html"><h3>Funeral</h3></a></div>
     <div class="category-card"><a href="weddingphotoshere.html"><h3>Wedding</h3></a></div>
+    <div class="category-card"><a href="cominsoon.html"><h3>Instagram Pics</h3></a></div>
     <div class="category-card"><a href="balloonphotos.html"><h3>Balloons</h3></a></div>
     <div class="category-card"><a href="photozonephotos.html"><h3>PhotoZone</h3></a></div>
   </div>
@@ -576,41 +577,6 @@ function updateOpenStatus() {
 
 updateOpenStatus();
 setInterval(updateOpenStatus, 60000);
-</script>
-<script>
-window.addEventListener("load", () => {
-  if (!localStorage.getItem("signedUp")) {
-    document.getElementById("signup-popup").classList.add("active");
-  }
-});
-
-document.getElementById("signupForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const number = document.getElementById("phoneNumber").value;
-  alert(`🌷 Thank you, ${number}! We'll be in touch soon.`);
-  localStorage.setItem("signedUp", "true");
-  document.getElementById("signup-popup").classList.remove("active");
-});
-
-function closeSignup() {
-  localStorage.setItem("signedUp", "true");
-  document.getElementById("signup-popup").classList.remove("active");
-}
-fetch("http://localhost:3000/send-sms", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ phone: number })
-})
-.then(res => res.json())
-.then(data => {
-  if (data.success) {
-    alert("🌷 Thank you! A confirmation text has been sent to your phone.");
-  } else {
-    alert("⚠️ Could not send text. Try again later.");
-  }
-})
-.catch(() => alert("⚠️ Could not connect to SMS server."));
-
 </script>
 
 <style>
