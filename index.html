@@ -68,7 +68,8 @@ section {
 h2 {
   text-align: center;
   margin-bottom: 40px;
-  color: rgb(22, 48, 12);
+  /* color: rgb(22, 48, 12);*/
+  color: #caba9c;
 }
 .flowers {
   display: grid;
@@ -123,6 +124,7 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+
 }
 .category-links {
   display: grid;
@@ -130,6 +132,7 @@ footer {
   gap: 20px;
   justify-items: center;
   margin-bottom: 50px;
+
 }
 .category-card {
   background-color: #fff0f5;
@@ -297,6 +300,8 @@ body {
 .open-status-container {
   text-align: center;
   margin-top: 10px;
+  left: 20px;
+  position: relative;
 }
 
 #openStatus {
@@ -308,7 +313,11 @@ body {
 
 @media (max-width: 768px) {
   #openStatus {
+      margin-right: 20px;
     font-size: 1rem;
+  }
+  .mobilehidenews{
+    display: none;
   }
 }
 .signup-popup {
@@ -398,7 +407,7 @@ body {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 25px;
-    color: #123d12;
+    color: #caba9c;
 }
 
 .offer-section ul {
@@ -413,7 +422,6 @@ body {
     font-size: 20px;
     color: #000;
 }
-
 
 
 
@@ -471,6 +479,7 @@ body {
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact Us</a></li>
+        <li class="mobilehidenews"><a href="#newssec">Newsletter</a></li>
       </ul>
     </nav>
   </div>
@@ -514,7 +523,6 @@ body {
 
 
 <section id="reviews">
-  <h2>Reviews</h2>
   <script src="https://static.elfsight.com/platform/platform.js" async></script>
   <div class="elfsight-app-b1c3af70-7b08-459e-9009-cebc8051d326" data-elfsight-app-lazy></div>
 </section>
@@ -540,9 +548,13 @@ body {
   </div>
 </section>
 
-<div>
+<section id="newssec">
+  <h2>Newsletter</h2>
+  <div>
+  
   <iframe width="700" height="400" src="https://efea90ef.sibforms.com/serve/MUIFAJ1eUV7nqu-WZVPVEenRC9kVE66YU_0EB92F83DDusscit3bLkAQm9OrdWUd7fSMnlImYS3HxYEw09bT3H78o4wwDM7qN-HdgF7TwacJET-Qv2zWLfVNXCnohUrFomaXOqPBZppcqdcvuttX9kXFoTSuCBEGHC2iwSETbhjaQn3ULYjd7_qfxqXquchjF9FYvhjyhZMyIYoBYA==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
 </div>
+</section>
 
 <footer>
   <p>&copy; 2004 Fortune Flowers | Address: 706 Kings Hwy, Brooklyn, NY 11223 | Email: Fortune706@yahoo.com</p>
