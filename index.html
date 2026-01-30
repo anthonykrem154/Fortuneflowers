@@ -70,7 +70,10 @@ h2 {
   margin-bottom: 40px;
   /* color: rgb(22, 48, 12);*/
   color: #caba9c;
-}
+  text-decoration: underline #caba9c;
+  text-underline-offset: 14px;
+
+} 
 .flowers {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -475,7 +478,6 @@ body {
 
       <ul>
         <li><a href="#catalog">Flower Catalog</a></li>
-        <li><a href="#offer">What We Offer</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact Us</a></li>
@@ -509,17 +511,6 @@ body {
   </div>
 </section>
 
-<section class="offer-section" id="offer">
-    <h2>What We Offer</h2>
-
-    <ul>
-        <li>Seasonal Specials</li>
-        <li>Custom Arrangements</li>
-        <li>Add-ons & Gifts</li>
-        <li>Pricing & Delivery Info</li>
-        <li>Contact & Ordering Details</li>
-    </ul>
-</section>
 
 
 <section id="reviews">
@@ -527,12 +518,45 @@ body {
   <div class="elfsight-app-b1c3af70-7b08-459e-9009-cebc8051d326" data-elfsight-app-lazy></div>
 </section>
 
-<section id="about">
-  <h2>About Us</h2>
+<section class="about-update">
   <div class="container">
-    <h3><b>Dear Friends,</b> Welcome to Fortune Flowers & Gifts, Inc.<br>We are a unique company, established on the principles of quality customer service and "Always treating others as you would wanted to be treated yourself." We believe that the most important ingredient in buying or selling any goods and services is trust. All of us at Fortune Flowers & Gifts share the same goals. We embrace competition. It drives us to be the "Best of the Best" and that is why we experiment for countless hours to develop the perfect style of Flowers & Gift creations. Welcome and always believe that we will ensure that the process of doing business with us is enjoyable, convenient and comfortable. Be confident. You will experience the "Best of the Best"</h3>
+    <h2>About Fortune Flowers</h2>
+    <p>
+<strong>Dear Friends,</strong> Welcome to <strong>Fortune Flowers & Gifts, Inc.</strong>
+We are a unique company, established on the principles of quality customer service and "Always treating others as you would wanted to be treated yourself." We believe that the most important ingredient in buying or selling any goods and services is trust. All of us at Fortune Flowers & Gifts share the same goals. We embrace competition. It drives us to be the "Best of the Best" and that is why we experiment for countless hours to develop the perfect style of Flowers & Gift creations. Welcome and always believe that we will ensure that the process of doing business with us is enjoyable, convenient and comfortable. Be confident. You will experience the "Best of the Best"
+    </p>
+    <p class="tagline">Let us help you brighten someone’s day with flowers that speak from the heart.</p>
   </div>
 </section>
+
+<style>
+.about-update {
+  padding: 60px 0;
+  color: #e0fdf4;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.about-update .container {
+  width: min(780px, 90%);
+  margin: auto;
+}
+
+
+.about-update p {
+  margin: 12px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #d1fae5;
+}
+
+.about-update .tagline {
+  font-style: italic;
+  margin-top: 10px;
+  color: #a7f3d0;
+}
+</style>
+
 
 <section id="contact">
   <h2>Contact Us</h2>
