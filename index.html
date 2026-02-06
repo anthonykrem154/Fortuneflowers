@@ -586,27 +586,7 @@ body {
 </div>
 
 <!-- Valentine Popup -->
-<div id="valentinePopup" class="popup-overlay">
-  <div class="popup-box">
-    
-    <button class="close-btn" onclick="closePopup()">✕</button>
 
-    <div class="popup-left">
-      <h1 style="color: #000; text-decoration: none;">Happy Valentine’s Day</h1>
-      <div class="hearts">🥰🥰🥰 💖💖 💘💘</div>
-      <p>
-        Make this Valentine’s Day unforgettable.<br>
-        Choose from our most romantic bouquets yet.
-      </p>
-
-    </div>
-
-    <div class="popup-right">
-      <img src="flwoersfor.png" alt="Valentine Bouquet">
-    </div>
-
-  </div>
-</div>
 
 
 
@@ -826,38 +806,6 @@ setInterval(updateOpenStatus, 60000);
   });
 })();
 </script>
-<script>
-  function closePopup(){
-    document.getElementById("valentinePopup").style.display = "none";
-  }
-
-  // Auto-show popup after delay
-  setTimeout(() => {
-    document.getElementById("valentinePopup").style.display = "flex";
-  }, 500);
-</script>
-<script>
-  const popup = document.getElementById("valentinePopup");
-  const popupKey = "valentine_popup_shown";
-
-  function markPopupSeen() {
-    localStorage.setItem(popupKey, "true");
-  }
-
-  function closePopup(){
-    markPopupSeen();
-    popup.style.display = "none";
-  }
-
-  window.addEventListener("load", () => {
-    if (localStorage.getItem(popupKey) === "true") {
-      popup.style.display = "none";
-    } else {
-      popup.style.display = "flex";
-    }
-  });
-</script>
-
 
 
 </body>
